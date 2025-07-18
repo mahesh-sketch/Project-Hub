@@ -30,7 +30,7 @@ A modern project and task management system built with the MERN stack (MongoDB, 
 1. **Clone the repository:**
 
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/mahesh-sketch/Project-Hub.git
    cd <repo-folder>
    ```
 
@@ -96,4 +96,4 @@ MIT License
 
 ##  Credits
 
-Built by [Your Name].
+Built by Mahesh Dash.
