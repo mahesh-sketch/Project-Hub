@@ -81,13 +81,13 @@ export default function Tasks() {
     fetchTasks();
     if (user?.role === "Admin") {
       axios
-        .get("http://localhost:5000/api/projects", {
+        .get(`${import.meta.env.VITE_API_URL}/api/projects`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setProjects(res.data))
         .catch(() => setProjects([]));
       axios
-        .get("http://localhost:5000/api/auth/users", {
+        .get(`${import.meta.env.VITE_API_URL}/api/auth/users`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setUsers(res.data.filter((u) => u.role === "Member")))
@@ -103,7 +103,7 @@ export default function Tasks() {
       if (filters.status) params.status = filters.status;
       if (filters.priority) params.priority = filters.priority;
       if (filters.search) params.search = filters.search;
-      const res = await axios.get("http://localhost:5000/api/tasks", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/tasks`, {
         headers: { Authorization: `Bearer ${token}` },
         params,
       });
@@ -131,7 +131,7 @@ export default function Tasks() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/tasks", form, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSnackbar({
@@ -168,7 +168,7 @@ export default function Tasks() {
         user?.role === "Admin" ? editForm : { status: editForm.status };
 
       await axios.put(
-        `http://localhost:5000/api/tasks/${selectedTask._id}`,
+        `${import.meta.env.VITE_API_URL}/api/tasks/${selectedTask._id}`,
         updateData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -197,7 +197,7 @@ export default function Tasks() {
   const handleDeleteConfirm = async () => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/tasks/${selectedTask._id}`,
+        `${import.meta.env.VITE_API_URL}/api/tasks/${selectedTask._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

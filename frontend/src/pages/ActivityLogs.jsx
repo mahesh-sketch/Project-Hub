@@ -26,7 +26,7 @@ export default function ActivityLogs() {
     async function fetchLogs() {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:5000/api/activity-logs", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/activity-logs`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setLogs(res.data);

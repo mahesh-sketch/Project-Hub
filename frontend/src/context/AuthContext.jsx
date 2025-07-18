@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
     if (token) {
       // Fetch user info from token
       axios
-        .get("http://localhost:5000/api/auth/me", {
+        .get(`${import.meta.env.VITE_API_URL}/api/auth/me`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => setUser(res.data.user))

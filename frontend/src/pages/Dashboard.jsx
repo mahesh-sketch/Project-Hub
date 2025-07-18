@@ -23,7 +23,7 @@ export default function Dashboard() {
     async function fetchStats() {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/dashboard/summary",
+          `${import.meta.env.VITE_API_URL}/api/dashboard/summary`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
